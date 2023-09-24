@@ -9,16 +9,18 @@ import {
 import './assets/styles/bootstrap.custom.css';
 import './assets/styles/index.css';
 import App from './App';
-import Homepage from './pages/Homepage';
+import HomePage from './pages/HomePage';
+import ProductPage from './pages/ProductPage';
 
 
 const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path='/' element={<App />}>
-      {/* The index={true} prevents multiple pages don't render at the same time */}
-      <Route index={true} path='/' element={<Homepage />} />
-    </Route>
-  )
+	createRoutesFromElements(
+		<Route path='/' element={<App />}>
+			{/* The index={true} prevents multiple pages don't render at the same time */}
+			<Route index={true} path='/' element={<HomePage />} />
+			<Route  path='/product/:id' element={<ProductPage />} />
+		</Route>
+	)
 );
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
