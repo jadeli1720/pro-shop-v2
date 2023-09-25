@@ -13,6 +13,7 @@ import './assets/styles/index.css';
 import App from './App';
 import HomePage from './pages/HomePage';
 import ProductPage from './pages/ProductPage';
+import CartPage from './pages/CartPage';
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -20,6 +21,7 @@ const router = createBrowserRouter(
 			{/* The index={true} prevents multiple pages rendering at the same time */}
 			<Route index={true} path='/' element={<HomePage />} />
 			<Route path='/product/:id' element={<ProductPage />} />
+			<Route path='/cart' element={<CartPage />} />
 		</Route>
 	)
 );
