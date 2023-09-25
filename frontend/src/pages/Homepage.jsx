@@ -2,6 +2,8 @@
 import { Row, Col } from "react-bootstrap";
 import Products from "../components/Products";
 import { useGetProductsQuery } from "../slices/productsApiSlice";
+import Loader from "../components/Loader";
+import Message from '../components/Message';
 
 const Homepage = () => {
 	//This replaces the useEffect and useState. Also gives us the data, isLoading and isError states automatically
@@ -10,22 +12,30 @@ const Homepage = () => {
 
 		return (
 			<>
-				{ isLoading ? (
-					<h2>Loading...</h2>
+				{isLoading ? (
+					<Loader />
 				) : error ? (
-					<div>{error?.data?.message || error.error }</div>
+					<Message variant='danger'>
+						{error?.data?.message || error.error}
+					</Message>
 				) : (
 					<>
 						<h1>Latest Products</h1>
 						<Row>
 							{products.map((product) => (
-								<Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+								<Col
+									key={product._id}
+									sm={12}
+									md={6}
+									lg={4}
+									xl={3}
+								>
 									<Products product={product} />
 								</Col>
 							))}
 						</Row>
 					</>
-				) }
+				)}
 			</>
 		);
 	}
