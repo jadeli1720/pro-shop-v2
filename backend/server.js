@@ -12,6 +12,9 @@ const port = process.env.PORT || 5000;
 
 const app = express();
 
+//Body Parser middleware:
+app.use(express.json());
+app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded))
 
 //ROUTES:
 app.get('/', (req, res) => {
